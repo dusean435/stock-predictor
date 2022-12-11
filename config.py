@@ -1,7 +1,9 @@
+import os
+
+
 class DevConfig:
-  def __init__(self):
-    pass
+    BASEDIR = os.path.abspath(os.path.dirname(__file__))
+
 
 class ProdConfig:
-  def __init__(self):
     pass
