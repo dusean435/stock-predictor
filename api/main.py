@@ -5,9 +5,9 @@ from flask_cors import CORS
 from api.stocks import stocks_ns
 from api.prices import prices_ns
 
-def create_app(config):
+def create_app(config_path):
     app = Flask(__name__, static_folder='../static')
-    app.config.from_object(config)
+    app.config.from_pyfile(config_path)
 
     CORS(app)
 

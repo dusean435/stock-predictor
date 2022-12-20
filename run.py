@@ -1,4 +1,5 @@
+import os
 from api.main import create_app
-from config import DevConfig
 
-app=create_app(DevConfig)
+config_path = os.path.join(os.path.dirname(__file__), 'config.py')
+app=create_app(config_path)
