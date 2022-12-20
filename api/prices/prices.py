@@ -1,7 +1,6 @@
 import os
 from flask_restx import Namespace, Resource
-
-from ...config import DATADIR
+from flask import current_app as app
 
 prices_ns = Namespace('prices')
 
@@ -10,7 +9,7 @@ class PricesPredicted(Resource):
 
   def get(self, ticker):
     try:
-      path = os.path.join(DATADIR, 'historical_prices', ticker + '.csv')
+      path = os.path.join(app.config['DATADIR'], 'historical_prices', ticker + '.csv')
       with open(path, 'r') as f:
         return f.read()
     except:
@@ -21,7 +20,7 @@ class PricesHistorical(Resource):
 
   def get(self, ticker):
     try:
-      path = os.path.join(DATADIR, 'predicted_prices', ticker + '.csv')
+      path = os.path.join(app.config['DATADIR'], 'predicted_prices', ticker + '.csv')
       with open(path, 'r') as f:
         return f.read()
     except:
